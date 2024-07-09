@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block login %}
+<div id="form_div_1">
+    <form id="form_1" method="post">
+    <div class="mb-3">
+        {{ form.hidden_tag() }}
+        <!-- <label for="username" class="form-label" class="label_bold">Username</label> -->
+        {{ form.username.label(for="username", class="form-label", class="label_bold") }}
+        {{ form.username(id="username", class="form-control", placeholder="Enter your username") }}
+        <!-- <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your Email address"> -->
+        <div id="emailHelp" class="form-text" style="color: white">We'll never share your info with anyone else.</div>
+    </div>
+    <div class="mb-3">
+        <!-- <label for="password" class="form-label" class="label_bold">Password</label> -->
+        {{ form.password.label(for="password", class="form-label", class="label_bold") }}
+        {{ form.password(id="password", type="password", class="form-control", placeholder="Enter your password") }}
+        <!-- <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password"> -->
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+    </div>
+    <p>Don't have an account? <a href="/register">Register Now</a></p>
+    {{ form.submit(type="submit", class="btn btn-primary", id="button2") }}
+    <!-- <button type="submit" class="btn btn-primary" id="button2">Submit</button> -->
+    </form>
+</div>
+
+{% endblock %}

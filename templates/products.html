@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block products %}
+
+
+{% for product in products %}
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+        <img src="{{product.image_url}}" alt="{{product.text}}" style="width: 100%;
+        height: 300px;
+        object-fit: cover;">
+        <div class="card-body">
+            <h5 class="card-title">{{product.text}}</h5>
+            <p class="card-text">€{{product.price}}0</p>
+            <a href="/products/{{product.id}}" class="btn btn-primary" id="button4">Buy</a>
+
+            {% if current_user.role == 'admin' %}
+            <a href="/update_product/{{product.id}}" class="btn btn-primary" style="background-color: white; border-color: #391E39; color: #391E39;">Update</a>
+            <a href="/delete_product/{{product.id}}" class="btn btn-primary" style="background-color: white; border-color: #391E39; color: #391E39;">Delete</a>
+            {% endif %}
+        </div>
+        </div>
+    </div>
+
+{% endfor %}
+
+{% endblock %}

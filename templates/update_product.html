@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block add_product %}
+<div id="form_div_3">
+    <form class="row g-3" id="form_3" method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        {{ form.text.label.text }}
+        {{ form.text(class="form-control mb-3 mt-2", placeholder=form.text.label.text) }}
+        {{ form.price.label.text }}
+        {{ form.price(class="form-control mb-3 mt-2", placeholder=form.price.label.text) }}
+        {{ form.description.label.text }}
+        {{ form.description(class="form-control mb-3 mt-2", placeholder=form.description.label.text) }}
+        {{ form.category_id.label.text }}
+        {{ form.category_id(class="form-control mb-3 mt-2", placeholder=form.category_id.label.text) }}
+
+        {{ form.image_url.label.text }}
+        {{ form.image_url(class="form-control mb-3 mt-2", placeholder=form.image_url.label.text) }}
+        
+        {{ form.submit(class="btn btn-primary mb-3", id="button5") }}
+    </form>
+</div>
+{% endblock %}

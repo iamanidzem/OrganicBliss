@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block about_us %}
+<div class="about-us-container">
+    <h1 style="padding-bottom: 2vw;">About Us</h1>
+    <p>Welcome to Organic Bliss, your trusted source for eco-friendly skincare products. Our mission is to provide high-quality, natural skincare solutions that are kind to your skin and the environment.</p>
+    <img src="{{ url_for('static', filename='images/serum_anim.png') }}" style="max-width: 300px;;" alt="flower">
+
+    <h2>Our Story</h2>
+    <p>Founded in 2024, Organic Bliss was born out of a passion for nature and a desire to create skincare products that harness the power of natural ingredients. We believe that skincare should be safe, effective, and sustainable. That's why all our products are crafted with the finest natural ingredients, free from harmful chemicals and synthetic additives.</p>
+    
+    <h2>Our Commitment</h2>
+    <p>At Organic Bliss, we are committed to sustainability and environmental responsibility. Our packaging is eco-friendly, and we strive to minimize our carbon footprint through sustainable sourcing and production practices. We are proud to offer cruelty-free products that are never tested on animals.</p>
+    
+    <h2>Our Products</h2>
+    <p>From soothing cleansers to nourishing moisturizers, each of our products is designed to deliver exceptional skincare benefits while respecting the planet. Our formulations are carefully developed to provide effective results, leaving your skin healthy, radiant, and rejuvenated.</p>
+    
+    <h2>Join Our Journey</h2>
+    <p>We invite you to join us on our journey towards a more sustainable and beautiful future. Explore our range of eco-friendly skincare products and experience the difference that nature can make. Thank you for choosing Organic Bliss – where beauty meets sustainability. <a href="/all_products">Shop Now</a></p>
+</div>
+{% endblock %}

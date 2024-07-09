@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block product %}
+<div class="card mb-3" style="max-width: 70%; margin: 15% auto;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{product.image_url}}" class="img-fluid rounded-start" alt="{{product.text}}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h1 class="card-title" style="padding-bottom: 2vw; padding-top: 1vw;">{{product.text}}</h1>
+          <h5 class="card-text" style="padding-bottom: 2vw;">{{product.description}}</h5>
+          <p class="card-text"><small class="text-muted" style="font-style: italic;">All of our products are composed with 99% natural origin ingredients, they are alcohol-free and respect the skin's natural balance.</small></p>
+          <p style="font-size: larger;" class="card-text">€{{product.price}}0</p>
+          <a href="" class="btn btn-primary" style="background-color: white; border-color: #391E39; color: #391E39; margin-top: 2%">Add to cart</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div id="product_div_2" style="margin-top: 10vw;">
+    <h2 style="margin-bottom: 3vw;">More Products</h2>
+    <div class="card-container">
+      {% for random_product in random_products %}
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+              <img src="{{random_product.image_url}}" alt="{{random_product.text}}" style="width: 100%; height: 300px; object-fit: cover;">
+              <div class="card-body">
+                  <h5 class="card-title">{{random_product.text}}</h5>
+                  <p class="card-text">€{{random_product.price}}0</p>
+                  <a href="/products/{{random_product.id}}" class="btn btn-primary" id="button4">Buy</a>
+
+                  {% if current_user.role == 'admin' %}
+                  <a href="/update_product/{{random_product.id}}" class="btn btn-primary" style="background-color: white; border-color: #391E39; color: #391E39;">Update</a>
+                  <a href="/delete_product/{{random_product.id}}" class="btn btn-primary" style="background-color: white; border-color: #391E39; color: #391E39;">Delete</a>
+                  {% endif %}
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+        <h5 style="color: #391E39;">Shop more <a href="/all_products">here</a></h5>
+    </div>
+</div>
+
+{% endblock %}

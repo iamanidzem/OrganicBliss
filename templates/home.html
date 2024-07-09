@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block carousel %}
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+  </div>
+  <div class="carousel-inner" style="height: 50vw;">
+      <div class="carousel-item active">
+          <img src="https://images.pexels.com/photos/7615805/pexels-photo-7615805.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+          <img src="https://images.pexels.com/photos/3735152/pexels-photo-3735152.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+          <img src="https://images.pexels.com/photos/12256510/pexels-photo-12256510.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+          <img src="https://images.pexels.com/photos/6963151/pexels-photo-6963151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+          <img src="https://images.pexels.com/photos/8102135/pexels-photo-8102135.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="...">
+      </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="image-text-container">
+  <img src="{{ url_for('static', filename='images/grapes_.jpg') }}" alt="Image Description">
+  <div class="overlay-text">
+      <h2>Beauty in harmony with nature</h2>
+      <p>Our mission is to provide high-quality, natural skincare solutions that are kind to your skin and the environment.</p>
+      <a href="/about_us" class="btn">Discover More</a>
+  </div>
+</div>
+
+
+<div id="product_div" style="margin-top: 10vw;">
+    <h2 style="margin-bottom: 3vw;">Popular Products</h2>
+    <div class="card-container">
+      {% for product in products %}
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+              <img src="{{product.image_url}}" alt="{{product.text}}" style="width: 100%; height: 300px; object-fit: cover;">
+              <div class="card-body">
+                  <h5 class="card-title">{{product.text}}</h5>
+                  <p class="card-text">€{{product.price}}0</p>
+                  <a href="/products/{{product.id}}" class="btn btn-primary" id="button4">Buy</a>
+
+                  {% if current_user.role == 'admin' %}
+                  <a href="/update_product/{{product.id}}" class="btn btn-primary" style="background-color: white; border-color: #391E39; color: #391E39;">Update</a>
+                  <a href="/delete_product/{{product.id}}" class="btn btn-primary" style="background-color: white; border-color: #391E39; color: #391E39;">Delete</a>
+                  {% endif %}
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+        <h5 style="color: #391E39;">Shop more <a href="/all_products">here</a></h5>
+    </div>
+</div>
+
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1>Our natural skincare to pamper your skin</h1>
+      <p class="lead">At Organic Bliss, we believe in the power of nature to provide the best care for your skin: the most effective, the most natural, the cleanest, and the most sustainable. That is s why all our skincare products are formulated with at least 95% natural origin ingredients, carefully selected to deliver visible results while respecting your skin and the environment.</p>
+    </div>
+</div>
+{% endblock %}
